@@ -1,0 +1,36 @@
+﻿@page "/"
+@using RabbitMq.Contracts
+@using global::MassTransit
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+<h3>@Notification</h3>
+
+@code{
+
+    public string Notification { get; set; }
+    public class PingConsumerDefinition : ConsumerDefinition<PingConsumer>
+    {
+        public PingConsumerDefinition()
+        {
+            EndpointName = "mstransit-queue";
+        }
+    }
+
+    public class PingConsumer : IConsumer<PingEvent>
+    {
+        public async Task Consume(ConsumeContext<PingEvent> context)
+        {
+        }
+    }
+
+    public class TextChangedEvent: EventArgs
+    {
+        public string Text { get; set; } = string.Empty;
+    }
+
+   
+    }
+
+}

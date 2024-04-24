@@ -1,0 +1,6 @@
+@RabbitMQ.MassTransit.Producer_HostAddress = http://localhost:5283
+
+GET {{RabbitMQ.MassTransit.Producer_HostAddress}}/ping/
+Accept: application/json
+
+###
